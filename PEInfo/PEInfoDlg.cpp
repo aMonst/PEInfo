@@ -13,7 +13,6 @@
 #define new DEBUG_NEW
 #endif
 
-
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
 class CAboutDlg : public CDialog
@@ -167,6 +166,7 @@ void CPEInfoDlg::OnBnClickedOk()
 	CAboutDlg about_dlg;
 	about_dlg.DoModal();
 }
+
 void CPEInfoDlg::OnBnClickedBtnOpen()
 {
 	// TODO: 在此添加控件通知处理程序代码
@@ -348,5 +348,4 @@ void CPEInfoDlg::OnBnClickedBtnDataDirInfo()
 	dlg.m_pPefileInfo = &m_PeFileInfo;
 	m_PeFileInfo.InitDataDirectoryTable();
 	dlg.DoModal();
-	
 }

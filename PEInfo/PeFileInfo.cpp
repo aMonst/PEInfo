@@ -197,15 +197,18 @@ void CPeFileInfo::GetFileCharacteristics(CString &strCharacter)
 
 PIMAGE_SECTION_HEADER CPeFileInfo::GetSectionHeader()
 {
-	PIMAGE_FILE_HEADER pFileHeader = GetFileHeader();
-	PIMAGE_SECTION_HEADER pSectionHeader = NULL;
-	if (NULL == pFileHeader)
-	{
-		return NULL;
-	}
-	PIMAGE_OPTIONAL_HEADER pOptionHeader = GetOptionalHeader();
-	pSectionHeader = (PIMAGE_SECTION_HEADER)((DWORD)(pOptionHeader) + pFileHeader->SizeOfOptionalHeader);
-	return pSectionHeader;
+	//PIMAGE_FILE_HEADER pFileHeader = GetFileHeader();
+	//PIMAGE_SECTION_HEADER pSectionHeader = NULL;
+	//if (NULL == pFileHeader)
+	//{
+	//	return NULL;
+	//}
+	//PIMAGE_OPTIONAL_HEADER pOptionHeader = GetOptionalHeader();
+	//pSectionHeader = (PIMAGE_SECTION_HEADER)((DWORD)(pOptionHeader) + pFileHeader->SizeOfOptionalHeader);
+	//return pSectionHeader;
+
+	PIMAGE_NT_HEADERS pNtHeader = GetNtHeaders();
+	return (PIMAGE_SECTION_HEADER)((DWORD)pNtHeader + sizeof(IMAGE_NT_HEADERS));
 }
 
 void CPeFileInfo::InitSectionTable()

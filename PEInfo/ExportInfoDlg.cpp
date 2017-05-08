@@ -122,8 +122,8 @@ void CExportInfoDlg::ShowFunctionInfo()
 		}
 		m_FuncInfoList.InsertItem(i, strInfo);
 
-		strInfo.Format(_T("%08x"), pAddressOfFunc[i]);
-		m_FuncInfoList.SetItemText(i, 1, strInfo);
+		strInfo.Format(_T("%08x"), pAddressOfFunc[pOriginals[i]]);
+		m_FuncInfoList.SetItemText(i, 2, strInfo);
 
 		char *pszName = (char*)m_pPeFileInfo->RVA2fOffset(pFuncName[i], (DWORD)m_pPeFileInfo->pImageBase);
 #ifdef UNICODE
@@ -133,6 +133,6 @@ void CExportInfoDlg::ShowFunctionInfo()
 #else
 		strInfo = pszName;
 #endif
-		m_FuncInfoList.SetItemText(i, 2, strInfo);
+		m_FuncInfoList.SetItemText(i, 1, strInfo);
 	}
 }
